@@ -5,6 +5,8 @@ import PendingAssignments from "../pages/PendingAssignments";
 import CreateAssignments from "../pages/CreateAssignments";
 import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
 import Home from "../pages/Home";
+import Login from "../pages/Authentication/Login";
+import Register from "../pages/Authentication/Register";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/my-attempted-assignments",
         element: <MyAttemptedAssignments></MyAttemptedAssignments>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },
