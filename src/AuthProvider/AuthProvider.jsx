@@ -30,7 +30,7 @@ export default function AuthProvider({ children }) {
   };
   const signInWithGoogle = () => {
     setLoading(true);
-    return signInWithPopup();
+    return signInWithPopup(auth, googleProvider);
   };
   const updateUser = (profileData) => {
     setLoading(true);

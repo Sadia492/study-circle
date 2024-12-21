@@ -45,17 +45,6 @@ export default function Navbar() {
                   />
                 </div>
               </div>
-              <div className="ml-2">
-                {user ? (
-                  <Link onClick={handleSignOut} className="btn">
-                    Logout
-                  </Link>
-                ) : (
-                  <Link className="btn" to="/login">
-                    Login
-                  </Link>
-                )}
-              </div>
             </div>
             <ul
               tabIndex={0}
@@ -68,6 +57,17 @@ export default function Navbar() {
                 <li>My Attempted Assignments</li>
               </NavLink>
             </ul>
+          </div>
+          <div className="ml-2">
+            {user ? (
+              <Link onClick={handleSignOut} className="btn">
+                Logout
+              </Link>
+            ) : (
+              <Link className="btn" to="/login">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

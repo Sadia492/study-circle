@@ -103,7 +103,7 @@ export default function Register() {
               Register
             </button>
           </div>
-          {/* {error && <p className="text-red-500 text-center">{error}</p>} */}
+          {error && <p className="text-red-500 text-center">{error}</p>}
           <p className="text-center">
             Already have an account? Please{" "}
             <Link className="text-red-500 font-bold" to="/login">
