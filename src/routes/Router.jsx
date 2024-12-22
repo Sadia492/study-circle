@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
+import UpdateAssignment from "../pages/UpdateAssignment";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateAssignment></UpdateAssignment>
+          </PrivateRoute>
+        ),
       },
     ],
   },
