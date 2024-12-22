@@ -157,9 +157,6 @@ export default function AssignmentDetails() {
                   <button className="btn btn-secondary">Submit</button>
                 </div>
               </form>
-              <button onClick={closeModal} className="btn btn-secondary">
-                Close
-              </button>
             </Modal>
           </div>
         </div>
