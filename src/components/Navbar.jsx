@@ -26,7 +26,11 @@ export default function Navbar() {
               <NavLink to="/assignments">
                 <li>Assignments </li>
               </NavLink>
-              <NavLink to="/pending-assignments">
+
+              <NavLink
+                className={`${user ? "" : "hidden"}`}
+                to="/pending-assignments"
+              >
                 <li>Pending Assignments</li>
               </NavLink>
             </ul>

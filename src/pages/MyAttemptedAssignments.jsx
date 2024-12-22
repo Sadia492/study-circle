@@ -2,16 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export default function MyAttemptedAssignments() {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const { data: submissions } = useQuery({
     queryKey: ["mySubmission"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_URL}/submissions/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/submissions/${user?.email}`);
       return data;
     },
   });
