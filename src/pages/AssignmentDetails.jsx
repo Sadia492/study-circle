@@ -130,7 +130,7 @@ export default function AssignmentDetails() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg max-w-lg w-full "
               overlayClassName="fixed top-0 left-0 right-0 bottom-0  bg-black bg-opacity-50"
             >
-              <form onSubmit={handleSubmit} className="card-body">
+              <form onSubmit={handleSubmit} className="card-body ">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Google Docs Link</span>
