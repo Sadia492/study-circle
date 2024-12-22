@@ -40,7 +40,9 @@ export default function AssignmentCard({ assignment, handleDelete }) {
             <Link to={`/update/${_id}`}>
               <button className="btn btn-secondary">Update</button>
             </Link>
-            <button className="btn btn-accent">View</button>
+            <Link to={`/details/${_id}`}>
+              <button className="btn btn-accent">View</button>
+            </Link>
           </div>
         </div>
       </div>
