@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 const googleProvider = new GoogleAuthProvider();
 export default function AuthProvider({ children }) {
@@ -39,8 +40,21 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
-      setLoading(false);
+      if (currentUser?.email) {
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_URL}/jwt`,
+          { email: currentUser?.email },
+          { withCredentials: true }
+        );
+
+        setLoading(false);
+      } else {
+        const { data } = await axios.get(`${import.meta.env.VITE_URL}/logout`, {
+          withCredentials: true,
+        });
+
+        setLoading(false);
+      }
       return () => unsubscribe();
     });
   }, []);
