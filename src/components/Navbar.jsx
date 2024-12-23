@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import logo from "../assets/book.png";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 
@@ -25,14 +25,30 @@ export default function Navbar() {
   }, [theme]);
 
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <div className=" bg-gradient-to-r py-3 from-primary to-secondary text-white">
+      <div className="navbar w-11/12 mx-auto">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">StudyCircle</a>
-        </div>
-        <div className="flex-none gap-2">
-          <div>
-            <ul className="menu menu-horizontal gap-3 font-semibold px-1">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
               <NavLink to="/">
                 <li>Home</li>
               </NavLink>
@@ -48,38 +64,64 @@ export default function Navbar() {
               </NavLink>
             </ul>
           </div>
-          <div className="dropdown dropdown-end">
-            <div className="flex">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar flex"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                </div>
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <NavLink className="p-2" to="/create-assignments">
-                <li>Create Assignments</li>
+          <a className="flex justify-center items-center gap-2">
+            <img className="w-10 h-10" src={logo} alt="" />
+            <h2 className="text-3xl flex items-center justify-center font-bold ">
+              {" "}
+              StudyCircle
+            </h2>
+          </a>
+        </div>
+        <div className="flex-none">
+          <div>
+            <ul className="menu menu-horizontal gap-3 font-semibold px-1  hidden lg:flex">
+              <NavLink to="/">
+                <li>Home</li>
               </NavLink>
-              <NavLink className="p-2" to="/my-attempted-assignments">
-                <li>My Attempted Assignments</li>
+              <NavLink to="/assignments">
+                <li>Assignments </li>
+              </NavLink>
+
+              <NavLink
+                className={`${user ? "" : "hidden"}`}
+                to="/pending-assignments"
+              >
+                <li>Pending Assignments</li>
               </NavLink>
             </ul>
           </div>
+
           <div className="ml-2 flex justify-center items-center">
             {user ? (
-              <Link onClick={handleSignOut} className="btn">
-                Logout
-              </Link>
+              <>
+                <div className="dropdown dropdown-end mr-2">
+                  <div className="flex">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-ghost btn-circle avatar flex"
+                    >
+                      <div className="w-10 rounded-full">
+                        <img alt="User" src={user?.photoURL} />
+                      </div>
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                  >
+                    <NavLink className="p-2" to="/create-assignments">
+                      <li>Create Assignments</li>
+                    </NavLink>
+                    <NavLink className="p-2" to="/my-attempted-assignments">
+                      <li>My Attempted Assignments</li>
+                    </NavLink>
+                  </ul>
+                </div>
+                <Link onClick={handleSignOut} className="btn">
+                  Logout
+                </Link>
+              </>
             ) : (
               <Link className="btn" to="/login">
                 Login
@@ -97,7 +139,7 @@ export default function Navbar() {
 
               {/* sun icon */}
               <svg
-                className="swap-off h-10 w-10 fill-current"
+                className="swap-off h-10 w-7 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -106,7 +148,7 @@ export default function Navbar() {
 
               {/* moon icon */}
               <svg
-                className="swap-on h-10 w-10 fill-current"
+                className="swap-on h-10 w-7 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
