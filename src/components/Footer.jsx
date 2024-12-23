@@ -10,7 +10,7 @@ export default function Footer() {
         <aside className="">
           <img className="w-16" src={logo} alt="" />
           <p className="font-bold">
-            <h2 className="font-bold text-xl">StudyCircle</h2>
+            <h2 className="font-bold text-2xl mb-2">StudyCircle</h2>
             "Learn, collaborate, and grow together with our online <br /> group
             study platform – where friends become study partners."
           </p>

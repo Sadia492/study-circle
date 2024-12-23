@@ -25,7 +25,7 @@ export default function Navbar() {
   }, [theme]);
 
   return (
-    <div className=" bg-gradient-to-r py-3 from-primary to-secondary text-white">
+    <div className=" fixed w-full z-10 bg-gradient-to-r py-3 from-primary to-secondary text-white">
       <div className="navbar w-11/12 mx-auto">
         <div className="flex-1">
           <div className="dropdown">
