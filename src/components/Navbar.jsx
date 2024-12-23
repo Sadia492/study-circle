@@ -47,7 +47,7 @@ export default function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2"
             >
               <NavLink to="/">
                 <li>Home</li>
@@ -108,7 +108,7 @@ export default function Navbar() {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 "
                   >
                     <NavLink className="p-2" to="/create-assignments">
                       <li>Create Assignments</li>
