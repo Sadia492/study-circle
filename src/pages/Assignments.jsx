@@ -75,7 +75,7 @@ export default function Assignments() {
   };
 
   return (
-    <div>
+    <div className="mt-24">
       <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
         <div>
           <select

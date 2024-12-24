@@ -48,7 +48,7 @@ export default function Features() {
           <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-15% to-secondary text-transparent bg-clip-text">
             Features
           </h2>
-          <p className="text-gray-600 mt-4 lg:w-3/5">
+          <p className="text-gray-400 mt-4 lg:w-3/5">
             With easy-to-use tools and real-time updates, our feature section
             ensures that every user can manage their tasks and interactions
             effortlessly.

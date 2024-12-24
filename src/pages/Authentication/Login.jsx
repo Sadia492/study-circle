@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import Lottie from "lottie-react";
+import loginAnimation from "../../assets/animation/login.json";
 
 export default function Login() {
   const [show, setShow] = useState(false);
@@ -18,31 +20,33 @@ export default function Login() {
     signInUser(email, password)
       .then((result) => {
         setUser(result.user);
-        console.log(result.user);
         toast.success("Login successful");
         navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => {
         toast.error(error.code);
-        console.log(error);
       });
     form.reset();
   };
   const handleSignInWithGoogle = () => {
     signInWithGoogle().then(() => {
+      navigate("/");
       toast.success("Login successful");
     });
   };
   return (
-    <div className="flex justify-center items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="flex justify-center items-center gap-12 mt-24 w-11/12 mx-auto">
+      <div className="card flex-1 bg-base-100 w-full p-4  shadow-2xl">
         <div className="text-center btn bg-gradient-to-r from-primary to-secondary text-white">
           <button onClick={handleSignInWithGoogle} className="flex gap-3">
             <FaGoogle></FaGoogle> Sign In With Google
           </button>
         </div>
+        <div className="divider">OR</div>
         <form onSubmit={handleLogin} className="card-body">
-          <h2 className="font-bold text-center text-2xl">LOGIN HERE</h2>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
+            LOGIN HERE
+          </h2>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -91,6 +95,9 @@ export default function Login() {
             </Link>
           </p>
         </form>
+      </div>
+      <div className="flex-1">
+        <Lottie animationData={loginAnimation} loop={true} />
       </div>
     </div>
   );

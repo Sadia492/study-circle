@@ -3,7 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-
+import registerAnimation from "../../assets/animation/register.json";
+import Lottie from "lottie-react";
 export default function Register() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ export default function Register() {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log({ name, email, password, photo });
+
     if (!/[A-Z]/.test(password)) {
       return setError("Must have an Uppercase letter in the password ");
     }
@@ -41,10 +42,12 @@ export default function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="flex flex-col-reverse lg:flex-row justify-center mt-28 w-11/12 mx-auto gap-12 items-center">
+      <div className="card bg-base-100 w-full flex-1 shrink-0 shadow-2xl">
         <form onSubmit={handleRegister} className="card-body">
-          <h2 className="font-bold text-center text-2xl">REGISTER NOW</h2>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-70% to-secondary text-transparent bg-clip-text text-center">
+            REGISTER NOW
+          </h2>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -74,7 +77,7 @@ export default function Register() {
               <span className="label-text">Photo Url</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="photo"
               placeholder="Photo"
               className="input input-bordered"
@@ -111,6 +114,13 @@ export default function Register() {
             </Link>
           </p>
         </form>
+      </div>
+      <div className="flex-1 flex justify-center items-center">
+        <Lottie
+          className="lg:w-4/5 "
+          animationData={registerAnimation}
+          loop={true}
+        />
       </div>
     </div>
   );

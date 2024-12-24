@@ -7,7 +7,7 @@ export default function FAQ() {
       <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-70% to-secondary text-transparent bg-clip-text">
         Frequently Asked Questions
       </h2>
-      <p className="text-gray-600 mt-4 lg:w-3/5 mx-auto">
+      <p className="text-gray-400 mt-4 lg:w-3/5 mx-auto">
         Have questions about using our platform? Check out our frequently asked
         questions below to find answers and get started!Explore our FAQs for
         quick help on creating, submitting, grading assignments, and more.
