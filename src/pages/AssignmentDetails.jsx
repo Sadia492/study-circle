@@ -34,7 +34,7 @@ export default function AssignmentDetails() {
   // Safely destructure name and email from creator
   const { name, email } = creator || {};
   if (isLoading) {
-    return <LoadingSpinner />; // Display loading spinner while data is fetching
+    return <LoadingSpinner />;
   }
 
   const handleSubmit = async (e) => {
@@ -84,10 +84,10 @@ export default function AssignmentDetails() {
   };
 
   return (
-    <div>
+    <div className="mt-24">
       {/* {isLoading && <LoadingSpinner></LoadingSpinner>} */}
-      <div className="flex lg:flex-row flex-col rounded-3xl mb-20 bg-base-100 gap-8 justify-center items-center shadow-xl w-11/12 mx-auto mt-20">
-        <figure className="flex-1 p-4">
+      <div className="flex lg:flex-row flex-col rounded-3xl mb-20 bg-base-100 gap-8 justify-center items-center p-8 shadow-xl w-11/12 mx-auto mt-20">
+        <figure className="flex-1">
           <img className="w-full rounded-3xl" src={image} alt="Album" />
         </figure>
         <div className="flex-1 p-4">
@@ -105,9 +105,8 @@ export default function AssignmentDetails() {
               {name || "Not provided"}
             </p>
             <p>
-              <span className="font-bold">
-                User's Email: {email || "No email provided"}
-              </span>
+              <span className="font-bold">User's Email: </span>
+              {email || "No email provided"}
             </p>
           </div>
           <div className="space-x-2 my-4">

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import gif from "../assets/animation/icons8-eye.gif";
+import { FaEye, FaPen, FaTrashAlt } from "react-icons/fa";
 
 export default function AssignmentCard({ assignment, handleDelete }) {
   const {
@@ -14,7 +16,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
   } = assignment || {};
   //   const handleDelete = ()
   return (
-    <div>
+    <div className="">
       <div className="card bg-base-100 shadow-xl h-full">
         <figure>
           <img src={image} alt="Shoes" />
@@ -22,27 +24,35 @@ export default function AssignmentCard({ assignment, handleDelete }) {
         <div className="card-body">
           <h2 className="card-title">
             {title}
-            <div className="badge badge-secondary">NEW</div>
+            <div className="badge  bg-gradient-to-r from-primary to-secondary text-white">
+              {difficulty}
+            </div>
           </h2>
           <p>{description}</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">{marks}</div>
-            <div className="badge badge-outline">{difficulty}</div>
-            {/* <div className="badge badge-outline">{dueDate.split("T")[0]}</div> */}
+          <div className="card-actions my-2 justify-start">
+            <div className="badge badge-outline">Marks: {marks}</div>
+
+            <div className="badge badge-outline">
+              Due Date: {dueDate.split("T")[0]}
+            </div>
           </div>
           <div className="card-actions justify-start">
+            <Link to={`/details/${_id}`}>
+              <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
+                <FaEye size={40} />
+              </button>
+            </Link>
+            <Link to={`/update/${_id}`}>
+              <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
+                <FaPen size={30} />
+              </button>
+            </Link>
             <button
               onClick={() => handleDelete(_id, email)}
-              className="btn btn-primary"
+              className="btn bg-gradient-to-r from-primary to-secondary text-white"
             >
-              Delete
+              <FaTrashAlt size={30} />
             </button>
-            <Link to={`/update/${_id}`}>
-              <button className="btn btn-secondary">Update</button>
-            </Link>
-            <Link to={`/details/${_id}`}>
-              <button className="btn btn-accent">View</button>
-            </Link>
           </div>
         </div>
       </div>

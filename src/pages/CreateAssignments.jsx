@@ -46,7 +46,7 @@ export default function CreateAssignments() {
         });
       }
     } catch (err) {
-      console.error("Error while posting data:", err);
+      toast.err(err.message);
     }
   };
   return (

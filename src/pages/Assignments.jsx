@@ -75,9 +75,18 @@ export default function Assignments() {
   };
 
   return (
-    <div className="mt-24">
-      <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
-        <div>
+    <div className="mt-24 w-11/12 mx-auto">
+      <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% text-center to-secondary text-transparent bg-clip-text">
+        Assignments
+      </h2>
+      <p className="text-gray-400 text-center mb-6 mt-4 lg:w-3/5 mx-auto">
+        {" "}
+        The Assignments page allows users to view, manage, and interact with
+        assignments dynamically. Users can explore assignment details, update
+        information, or delete assignments seamlessly.
+      </p>
+      <div className="flex mb-6 flex-col md:flex-row justify-center items-center gap-5 ">
+        <div className="">
           <select
             onChange={(e) => {
               setFilter(e.target.value);
@@ -106,8 +115,8 @@ export default function Assignments() {
           />
         </div>
       </div>
-      Assignments
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {assignments?.map((assignment) => (
           <AssignmentCard
             key={assignment._id}
