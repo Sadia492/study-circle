@@ -9,8 +9,8 @@ export default function Footer() {
       <footer className="w-11/12 mx-auto footer py-16">
         <aside className="">
           <img className="w-16" src={logo} alt="" />
+          <h2 className="font-bold text-2xl mb-2">StudyCircle</h2>
           <p className="font-bold">
-            <h2 className="font-bold text-2xl mb-2">StudyCircle</h2>
             "Learn, collaborate, and grow together with our online <br /> group
             study platform – where friends become study partners."
           </p>

@@ -3,7 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/book.png";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
-
+// import { ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 export default function Navbar() {
   const { user, signOutUser } = useAuth();
   const handleSignOut = () => {
@@ -102,7 +104,13 @@ export default function Navbar() {
                       className="btn btn-ghost btn-circle avatar flex"
                     >
                       <div className="w-10 rounded-full">
-                        <img alt="User" src={user?.photoURL} />
+                        <img
+                          data-tooltip-id="my-tooltip"
+                          data-tooltip-content={user?.displayName}
+                          alt="User"
+                          src={user?.photoURL}
+                        />
+                        <Tooltip id="my-tooltip" />
                       </div>
                     </div>
                   </div>
