@@ -70,7 +70,7 @@ export default function Features() {
         </div>
       </div>
 
-      <div className="relative h-full  mx-auto">
+      <div className="relative h-full mx-auto">
         <Slider ref={sliderRef} {...settings}>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">

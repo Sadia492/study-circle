@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/book.png";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -8,6 +8,21 @@ import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 export default function Navbar() {
   const { user, signOutUser } = useAuth();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = window.location.pathname; // Or use useLocation() from React Router if you're using it
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true); // Navbar will slide in when scrolled more than 50px
+      } else {
+        setIsScrolled(false); // Navbar will slide out when scroll is less than 50px
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const handleSignOut = () => {
     signOutUser().then(() => {
       toast.success("Logout successful");
@@ -27,7 +42,15 @@ export default function Navbar() {
   }, [theme]);
 
   return (
-    <div className=" fixed w-full z-10 bg-gradient-to-r py-3 from-primary to-secondary text-white">
+    <div
+      className={`w-full fixed top-0 z-10 py-3 text-white transition-all duration-500 ease-in-out ${
+        pathname === "/"
+          ? isScrolled
+            ? "bg-gradient-to-r from-primary to-secondary backdrop-blur-md transform translate-y-0"
+            : "bg-transparent transform translate-y-[-100%]" // Navbar is off-screen when not scrolled
+          : "bg-gradient-to-r from-primary to-secondary backdrop-blur-xl transform translate-y-0" // Always on screen for other pages
+      }`}
+    >
       <div className="navbar w-11/12 mx-auto">
         <div className="flex-1">
           <div className="dropdown">
