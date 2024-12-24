@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
+import bgImg from "../assets/bgImg.png";
 
 Modal.setAppElement("#root");
 
@@ -59,95 +60,115 @@ export default function PendingAssignments() {
   };
 
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Assignment Title</th>
-              <th>Assignment Marks</th>
-              <th>Examinee Name</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pendingSubmissions &&
-              pendingSubmissions?.map((submission, idx) => (
-                <tr key={submission._id} className="hover">
-                  <th>{idx + 1}</th>
-                  <td>{submission.title}</td>
-                  <td>{submission.assignmentMarks}</td>
-                  <td>{submission?.examinee?.name}</td>
-                  <td>
-                    <button onClick={openModal} className="btn btn-secondary">
-                      Give Marks
-                    </button>
-                    <Modal
-                      isOpen={isModalOpen}
-                      onRequestClose={closeModal}
-                      contentLabel="Example Modal"
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg max-w-lg w-full "
-                      overlayClassName="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10"
-                    >
-                      <div>
-                        <p>
-                          <span>Google Docs Link: </span>
-                          <a target="_blank" href={submission?.link}>
-                            {submission?.link}
-                          </a>
-                        </p>
-                        <p>
-                          <span>Note: </span>
-                          {submission?.note}
-                        </p>
+    <div
+      className="mt-[5.5rem]"
+      style={{
+        backgroundImage: `url(${bgImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="w-11/12 mx-auto">
+        <h2 className="text-3xl font-bold text-center  text-white">
+          Pending Assignments
+        </h2>
+        <p className=" mt-4 text-center mb-6 lg:w-3/5 mx-auto  text-white">
+          The Pending Assignments page lists assignments that are yet to be
+          completed or submitted. It helps users track deadlines, prioritize
+          tasks, and stay on top of their academic responsibilities.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="table text-center">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Assignment Title</th>
+                <th>Assignment Marks</th>
+                <th>Examinee Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pendingSubmissions &&
+                pendingSubmissions?.map((submission, idx) => (
+                  <tr key={submission._id} className="">
+                    <th>{idx + 1}</th>
+                    <td>{submission.title}</td>
+                    <td>{submission.assignmentMarks}</td>
+                    <td>{submission?.examinee?.name}</td>
+                    <td>
+                      <button
+                        onClick={openModal}
+                        className="btn bg-gradient-to-r from-primary to-secondary text-white"
+                      >
+                        Give Marks
+                      </button>
+                      <Modal
+                        isOpen={isModalOpen}
+                        onRequestClose={closeModal}
+                        contentLabel="Example Modal"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg max-w-lg w-full "
+                        overlayClassName="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10"
+                      >
+                        <div>
+                          <p>
+                            <span>Google Docs Link: </span>
+                            <a target="_blank" href={submission?.link}>
+                              {submission?.link}
+                            </a>
+                          </p>
+                          <p>
+                            <span>Note: </span>
+                            {submission?.note}
+                          </p>
 
-                        <form
-                          onSubmit={(e) =>
-                            handleSubmit(
-                              e,
-                              submission?.examinee?.email,
-                              submission?._id
-                            )
-                          }
-                          className="card-body "
-                        >
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">Marks</span>
-                            </label>
-                            <input
-                              type="number"
-                              placeholder="marks"
-                              name="marks"
-                              className="input input-bordered"
-                              required
-                            />
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">Feedback</span>
-                            </label>
-                            <textarea
-                              className="textarea textarea-bordered"
-                              name="feedback"
-                              placeholder="give feedback"
-                            ></textarea>
-                          </div>
-                          <div className="form-control mt-6">
-                            <button className="btn btn-secondary">
-                              Submit
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </Modal>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                          <form
+                            onSubmit={(e) =>
+                              handleSubmit(
+                                e,
+                                submission?.examinee?.email,
+                                submission?._id
+                              )
+                            }
+                            className="card-body "
+                          >
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">Marks</span>
+                              </label>
+                              <input
+                                type="number"
+                                placeholder="marks"
+                                name="marks"
+                                className="input input-bordered"
+                                required
+                              />
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">Feedback</span>
+                              </label>
+                              <textarea
+                                className="textarea textarea-bordered"
+                                name="feedback"
+                                placeholder="give feedback"
+                              ></textarea>
+                            </div>
+                            <div className="form-control mt-6">
+                              <button className="btn btn-secondary">
+                                Submit
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </Modal>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,6 @@ export default function AssignmentDetails() {
     },
   });
 
-  console.log(assignment);
   const { title, description, marks, image, difficulty, dueDate, creator } =
     assignment || {};
 
@@ -52,8 +51,8 @@ export default function AssignmentDetails() {
         name: user?.displayName,
       },
       assignmentMarks: marks,
-      obtainedMarks: 0,
-      feedback: "",
+      obtainedMarks: "Not Rated",
+      feedback: "Not Checked",
     };
     // console.log(formData);
     if (user?.email !== assignment?.creator?.email) {
@@ -85,7 +84,7 @@ export default function AssignmentDetails() {
 
   return (
     <div className="mt-24">
-      {/* {isLoading && <LoadingSpinner></LoadingSpinner>} */}
+      {isLoading && <LoadingSpinner></LoadingSpinner>}
       <div className="flex lg:flex-row flex-col rounded-3xl mb-20 bg-base-100 gap-8 justify-center items-center p-8 shadow-xl w-11/12 mx-auto mt-20">
         <figure className="flex-1">
           <img className="w-full rounded-3xl" src={image} alt="Album" />

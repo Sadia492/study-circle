@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <div className="bg-base-200 text-base-content mt-12">
+    <div className="bg-base-200 text-base-content">
       <footer className="w-11/12 mx-auto footer py-16">
         <aside className="">
           <img className="w-16" src={logo} alt="" />
