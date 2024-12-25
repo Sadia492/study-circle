@@ -6,8 +6,8 @@ Welcome to **StudyCircle**, a collaborative online platform designed for student
 
 Visit the live version of **StudyCircle** here:
 
-[**StudyCircle Live Site**](https://study-circle-face7.web.app/)
-[**StudyCircle Alternative Live Site**](https://study-circle.netlify.app/)
+- [**StudyCircle Live Site**](https://study-circle-face7.web.app/)
+- [**StudyCircle Alternative Live Site**](https://study-circle.netlify.app/)
 
 Check it out and start collaborating with your friends today! 🚀
 
