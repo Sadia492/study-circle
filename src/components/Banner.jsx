@@ -61,12 +61,12 @@ export default function Banner() {
             />
             <div className="absolute top-0 flex flex-col pt-16 justify-center items-center  pl-6 h-screen text-white w-full left-0 z-30 font-bold space-y-4">
               <h1
-                className={`text-5xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text`}
+                className={`text-5xl font-bold bg-gradient-to-r text-center from-primary to-secondary text-transparent bg-clip-text`}
               >
                 {slide.title}
               </h1>
               <h1
-                className={`text-5xl font-bold bg-gradient-to-r from-secondary to-primary text-transparent bg-clip-text`}
+                className={`text-5xl font-bold bg-gradient-to-r text-center from-secondary to-primary text-transparent bg-clip-text`}
               >
                 {slide.title2}
               </h1>
@@ -74,7 +74,7 @@ export default function Banner() {
                 {slide.description}
               </p>
               <a
-                href="/"
+                href="/assignments"
                 className={` btn bg-gradient-to-r from-primary to-secondary text-white`}
               >
                 Connect Now

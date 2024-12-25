@@ -83,6 +83,12 @@ export default function Assignments() {
 
     return () => clearTimeout(timer); // Cleanup on unmount or search change
   }, [search]);
+  useEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [debouncedSearch]); // Ensures focus remains even during updates
+
   if (isLoading) {
     return <LoadingSpinner></LoadingSpinner>;
   }

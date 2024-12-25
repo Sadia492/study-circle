@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { compareAsc } from "date-fns";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 Modal.setAppElement("#root");
 
@@ -17,13 +18,12 @@ export default function AssignmentDetails() {
   const { user } = useAuth();
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const axiosSecure = useAxiosSecure();
 
   const { data: assignment, isLoading } = useQuery({
     queryKey: ["assignment"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_URL}/assignment/${id}`
-      );
+      const { data } = await axiosSecure.get(`/assignment/${id}`);
 
       return data;
     },
@@ -61,10 +61,7 @@ export default function AssignmentDetails() {
       return toast.error("Deadline Crossed, Submission Forbidden!");
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_URL}/add-submission`,
-        formData
-      );
+      const { data } = await axiosSecure.post(`/add-submission`, formData);
       if (data.insertedId) {
         Swal.fire({
           title: "Success",
@@ -74,7 +71,7 @@ export default function AssignmentDetails() {
         closeModal();
       }
     } catch (err) {
-      console.error("Error while posting data:", err);
+      toast.error(err.message);
     }
   };
 

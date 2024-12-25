@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export default function UpdateAssignment() {
   const { user } = useAuth();
@@ -12,12 +13,11 @@ export default function UpdateAssignment() {
   const navigate = useNavigate();
   const [assignment, setAssignment] = useState();
   const [startDate, setStartDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_URL}/assignment/${id}`
-        );
+        const { data } = await axiosSecure.get(`/assignment/${id}`);
         setAssignment(data);
         if (data.dueDate) {
           setStartDate(new Date(data.dueDate)); // Update startDate after fetch
@@ -62,12 +62,11 @@ export default function UpdateAssignment() {
         name: user?.displayName,
       },
     };
-    console.log(formData);
     // console.log(user?.email, creator.email);
     if (user?.email === assignment?.creator?.email) {
       try {
-        const { data } = await axios.put(
-          `${import.meta.env.VITE_URL}/update-assignment/${id}`,
+        const { data } = await axiosSecure.put(
+          `/update-assignment/${id}`,
           formData
         );
         if (data.modifiedCount) {
@@ -235,7 +234,7 @@ export default function UpdateAssignment() {
           fill="url(#grad2)"
         />
       </svg>
-      <div className="card w-3/5 mx-auto ">
+      <div className="card lg:w-3/5 mx-auto ">
         <form
           onSubmit={handleSubmit}
           className="card-body grid grid-cols-1 md:grid-cols-2 gap-x-6"

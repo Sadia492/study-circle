@@ -7,12 +7,14 @@ import bgImg from "../assets/bgImg.png";
 import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 Modal.setAppElement("#root");
 
 export default function PendingAssignments() {
   const [selectedSubmission, setSelectedSubmission] = useState(null);
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const {
     data: pendingSubmissions,
@@ -21,9 +23,7 @@ export default function PendingAssignments() {
   } = useQuery({
     queryKey: ["pending"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_URL}/submissions/status/pending`
-      );
+      const { data } = await axiosSecure.get(`/submissions/status/pending`);
       return data;
     },
   });
@@ -41,8 +41,8 @@ export default function PendingAssignments() {
 
     if (user?.email !== examineeEmail) {
       try {
-        const { data } = await axios.patch(
-          `${import.meta.env.VITE_URL}/update-submission/${id}`,
+        const { data } = await axiosSecure.patch(
+          `/update-submission/${id}`,
           formData
         );
         if (data.modifiedCount) {
@@ -100,7 +100,7 @@ export default function PendingAssignments() {
               </tr>
             </thead>
             <tbody>
-              {pendingSubmissions.length ? (
+              {pendingSubmissions?.length ? (
                 pendingSubmissions.map((submission, idx) => (
                   <tr
                     key={submission._id}

@@ -7,10 +7,12 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import bgHex from "../assets/bgImage2.jpg";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export default function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,10 +41,7 @@ export default function CreateAssignments() {
     };
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_URL}/add-assignments`,
-        formData
-      );
+      const { data } = await axiosSecure.post(`/add-assignments`, formData);
       if (data.insertedId) {
         Swal.fire({
           title: "Assignment created",
@@ -204,7 +203,7 @@ export default function CreateAssignments() {
       </svg>
       {/* Decorative SVG background (Stars) */}
 
-      <div className="card w-3/5 mx-auto ">
+      <div className="card lg:w-3/5 mx-auto ">
         <form
           onSubmit={handleSubmit}
           className="card-body grid grid-cols-1 md:grid-cols-2 gap-x-6"
