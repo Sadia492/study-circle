@@ -16,7 +16,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
   } = assignment || {};
   //   const handleDelete = ()
   return (
-    <div className="">
+    <div className="hover:scale-105 transform transition duration-300 ease-in-out">
       <div className="card bg-base-100 shadow-xl h-full">
         <figure>
           <img src={image} alt="Shoes" />

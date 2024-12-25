@@ -21,50 +21,69 @@ export default function MyAttemptedAssignments() {
     return <LoadingSpinner></LoadingSpinner>;
   }
   return (
-    <div
-      className="mt-[5.5rem] "
-      style={{
-        backgroundImage: `url(${bgImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="mt-[5.5rem]">
       <div className="w-11/12 mx-auto">
-        <h2 className="text-3xl font-bold text-center  text-white">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
           My Attempted Assignments
         </h2>
-        <p className=" mt-4 text-center mb-6 lg:w-3/5 mx-auto  text-white">
+        <p className="mt-4 text-center mb-6 lg:w-3/5 mx-auto text-gray-400">
           The Attempted Assignments page showcases assignments users have
           completed or submitted. It provides a summary of their performance,
           including grades, submission status, and feedback.
         </p>
-        <div className="overflow-x-auto">
-          <table className="table text-center border-2">
+        {/* Ensure scrollbar is always visible */}
+        <div
+          className="overflow-x-scroll"
+          style={{ overflowX: "scroll", whiteSpace: "nowrap" }}
+        >
+          <table className="table text-center border-separate border-spacing-y-3 w-full">
             {/* head */}
             <thead>
-              <tr className="font-bold text-white text-xl">
-                <th className="border-2">#</th>
-                <th className="border-2">Assignment Title</th>
-                <th className="border-2">Status</th>
-                <th className="border-2">Assignment Marks</th>
-                <th className="border-2">Obtained Marks</th>
-                <th className="border-2">Feedback</th>
+              <tr className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg">
+                <th className="py-3 px-6">#</th>
+                <th className="py-3 px-6">Assignment Title</th>
+                <th className="py-3 px-6">Status</th>
+                <th className="py-3 px-6">Assignment Marks</th>
+                <th className="py-3 px-6">Obtained Marks</th>
+                <th className="py-3 px-6">Feedback</th>
               </tr>
             </thead>
             <tbody>
               {submissions &&
-                submissions?.map((submission, idx) => (
-                  <tr key={submission._id} className="text-white font-medium">
-                    <th className="border-2">{idx + 1}</th>
-                    <td className="border-2">{submission.title}</td>
-                    <td className="border-2 ">
-                      <span className="px-3 py-1 font-medium rounded-full  bg-primary/30 text-primary">
+                submissions.map((submission, idx) => (
+                  <tr
+                    key={submission._id}
+                    className="bg-white shadow-lg rounded-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                  >
+                    <th className="py-3 px-6 text-primary">{idx + 1}</th>
+                    <td className="py-3 px-6 text-gray-700 font-medium">
+                      {submission.title}
+                    </td>
+                    <td className="py-3 px-6">
+                      <span
+                        className={`px-3 py-1 font-medium rounded-full bg-yellow-100 text-yellow-600`}
+                      >
                         {submission.status}
                       </span>
                     </td>
-                    <td className="border-2">{submission.assignmentMarks}</td>
-                    <td className="border-2">{submission.obtainedMarks}</td>
-                    <td className="border-2">{submission.feedback}</td>
+                    <td className="py-3 px-6 text-gray-600">
+                      {submission.assignmentMarks}
+                    </td>
+                    <td className="py-3 px-6">
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-gray-700 font-medium">
+                          {submission.obtainedMarks}
+                        </span>
+                        <img
+                          src="https://img.icons8.com/color/48/trophy.png"
+                          alt="Trophy"
+                          className="w-6 h-6"
+                        />
+                      </div>
+                    </td>
+                    <td className="py-3 px-6 text-gray-700">
+                      {submission.feedback}
+                    </td>
                   </tr>
                 ))}
             </tbody>

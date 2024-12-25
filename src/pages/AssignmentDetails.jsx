@@ -55,31 +55,31 @@ export default function AssignmentDetails() {
       feedback: "Not Checked",
     };
     // console.log(formData);
-    if (user?.email !== assignment?.creator?.email) {
-      try {
-        const { data } = await axios.post(
-          `${import.meta.env.VITE_URL}/add-submission`,
-          formData
-        );
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Success",
-            text: "Assignment Submitted successfully",
-            icon: "success",
-          });
-          closeModal();
-        }
-      } catch (err) {
-        console.error("Error while posting data:", err);
+    // if (user?.email !== assignment?.creator?.email) {
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_URL}/add-submission`,
+        formData
+      );
+      if (data.insertedId) {
+        Swal.fire({
+          title: "Success",
+          text: "Assignment Submitted successfully",
+          icon: "success",
+        });
+        closeModal();
       }
-    } else {
-      Swal.fire({
-        title: "Error!",
-        text: "The creator of the assignment can not submit the assignment.",
-        icon: "error",
-      });
-      closeModal();
+    } catch (err) {
+      console.error("Error while posting data:", err);
     }
+    // } else {
+    // Swal.fire({
+    //   title: "Error!",
+    //   text: "The creator of the assignment can not submit the assignment.",
+    //   icon: "error",
+    // });
+    // closeModal();
+    // }
   };
 
   return (
