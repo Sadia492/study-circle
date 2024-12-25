@@ -71,7 +71,11 @@ export default function MyAttemptedAssignments() {
                     </td>
                     <td className="py-3 px-6">
                       <span
-                        className={`px-3 py-1 font-medium rounded-full bg-yellow-100 text-yellow-600`}
+                        className={`px-3 py-1 font-medium rounded-full ${
+                          submission.status === "pending"
+                            ? "bg-yellow-100 text-yellow-600"
+                            : "bg-green-100 text-green-600"
+                        } `}
                       >
                         {submission.status}
                       </span>
@@ -81,18 +85,34 @@ export default function MyAttemptedAssignments() {
                     </td>
                     <td className="py-3 px-6">
                       <div className="flex items-center justify-center gap-2">
-                        <span className="text-gray-700 font-medium">
+                        <span
+                          className={`text-gray-700 py-1 px-3 rounded-full font-medium ${
+                            submission.obtainedMarks === "Not Rated"
+                              ? "bg-yellow-100 text-yellow-600"
+                              : ""
+                          }`}
+                        >
                           {submission.obtainedMarks}
                         </span>
-                        <img
-                          src="https://img.icons8.com/color/48/trophy.png"
-                          alt="Trophy"
-                          className="w-6 h-6"
-                        />
+                        {submission.obtainedMarks !== "Not Rated" && (
+                          <img
+                            src="https://img.icons8.com/color/48/trophy.png"
+                            alt="Trophy"
+                            className="w-6 h-6"
+                          />
+                        )}
                       </div>
                     </td>
-                    <td className="py-3 px-6 text-gray-700">
-                      {submission.feedback}
+                    <td className={`py-3 px-6 text-gray-700 `}>
+                      <span
+                        className={`rounded-full  py-1 px-3 font-medium ${
+                          submission.feedback === "Not Checked"
+                            ? "bg-yellow-100 text-yellow-600"
+                            : ""
+                        }`}
+                      >
+                        {submission.feedback}
+                      </span>
                     </td>
                   </tr>
                 ))

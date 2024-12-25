@@ -36,7 +36,7 @@ export default function Login() {
     });
   };
   return (
-    <div className="flex justify-center items-center gap-12 mt-24 w-11/12 mx-auto">
+    <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-12 mt-24 w-11/12 mx-auto">
       <Helmet>
         <title>StudyCircle | Login</title>
       </Helmet>

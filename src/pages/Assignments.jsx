@@ -122,7 +122,7 @@ export default function Assignments() {
       {isLoading && <LoadingSpinner></LoadingSpinner>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 mt-12 lg:grid-cols-3 gap-6 ">
-        {assignments?.length ? (
+        {!isLoading && assignments?.length ? (
           assignments?.map((assignment) => (
             <AssignmentCard
               key={assignment._id}
@@ -131,7 +131,11 @@ export default function Assignments() {
             ></AssignmentCard>
           ))
         ) : (
-          <p className="text-2xl col-span-3 font-bold text-primary text-center">
+          <p
+            className={`text-2xl col-span-3 font-bold text-primary text-center ${
+              isLoading ? "hidden" : ""
+            }`}
+          >
             No Assignment Created
           </p>
         )}
