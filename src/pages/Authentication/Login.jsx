@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/animation/login.json";
+import { Helmet } from "react-helmet-async";
 
 export default function Login() {
   const [show, setShow] = useState(false);
@@ -36,6 +37,9 @@ export default function Login() {
   };
   return (
     <div className="flex justify-center items-center gap-12 mt-24 w-11/12 mx-auto">
+      <Helmet>
+        <title>StudyCircle | Login</title>
+      </Helmet>
       <div className="card flex-1 w-full p-4  shadow-2xl">
         <div className="text-center btn bg-gradient-to-r from-primary to-secondary text-white">
           <button onClick={handleSignInWithGoogle} className="flex gap-3">

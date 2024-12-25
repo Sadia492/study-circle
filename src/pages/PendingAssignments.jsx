@@ -8,6 +8,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 Modal.setAppElement("#root");
 
@@ -73,6 +74,9 @@ export default function PendingAssignments() {
 
   return (
     <div className="mt-[5.5rem]">
+      <Helmet>
+        <title>StudyCircle | Pending</title>
+      </Helmet>
       <div className="w-11/12 mx-auto">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
           Pending Assignments

@@ -5,6 +5,7 @@ import AssignmentCard from "../components/AssignmentCard";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 
 export default function Assignments() {
   const queryClient = useQueryClient();
@@ -95,6 +96,9 @@ export default function Assignments() {
 
   return (
     <div className="mt-24 bg-transparent w-11/12 mx-auto">
+      <Helmet>
+        <title>StudyCircle | Assignments</title>
+      </Helmet>
       <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% text-center to-secondary text-transparent bg-clip-text">
         Assignments
       </h2>

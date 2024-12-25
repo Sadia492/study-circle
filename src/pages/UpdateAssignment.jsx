@@ -6,6 +6,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 export default function UpdateAssignment() {
   const { user } = useAuth();
@@ -91,6 +92,9 @@ export default function UpdateAssignment() {
 
   return (
     <div className="mt-24">
+      <Helmet>
+        <title>StudyCircle | Update</title>
+      </Helmet>
       <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
         Update Your Assignment
       </h2>

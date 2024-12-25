@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import registerAnimation from "../../assets/animation/register.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 export default function Register() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
@@ -43,6 +44,9 @@ export default function Register() {
 
   return (
     <div className="flex flex-col-reverse lg:flex-row justify-center mt-28 w-11/12 mx-auto gap-12 items-center">
+      <Helmet>
+        <title>StudyCircle | Register</title>
+      </Helmet>
       <div className="card bg-base-100 w-full flex-1 shrink-0 shadow-2xl">
         <form onSubmit={handleRegister} className="card-body">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-70% to-secondary text-transparent bg-clip-text text-center">

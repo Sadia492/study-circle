@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import LoadingSpinner from "../components/LoadingSpinner";
 import bgImg from "../assets/bgImg.png";
+import { Helmet } from "react-helmet-async";
 
 export default function MyAttemptedAssignments() {
   const { user } = useAuth();
@@ -22,6 +23,9 @@ export default function MyAttemptedAssignments() {
   }
   return (
     <div className="mt-[5.5rem]">
+      <Helmet>
+        <title>StudyCircle | My Attempted</title>
+      </Helmet>
       <div className="w-11/12 mx-auto">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
           My Attempted Assignments

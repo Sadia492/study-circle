@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { compareAsc } from "date-fns";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 Modal.setAppElement("#root");
 
@@ -77,6 +78,9 @@ export default function AssignmentDetails() {
 
   return (
     <div className="mt-24">
+      <Helmet>
+        <title>StudyCircle | Details</title>
+      </Helmet>
       {isLoading && <LoadingSpinner></LoadingSpinner>}
       <div className="flex lg:flex-row flex-col rounded-3xl mb-20 bg-base-100 gap-8 justify-center items-center p-8 shadow-xl w-11/12 mx-auto mt-20">
         <figure className="flex-1">

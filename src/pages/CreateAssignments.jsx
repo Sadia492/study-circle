@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import bgHex from "../assets/bgImage2.jpg";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 export default function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
@@ -57,6 +58,9 @@ export default function CreateAssignments() {
   };
   return (
     <div className="mt-24 text-center">
+      <Helmet>
+        <title>StudyCircle | Create</title>
+      </Helmet>
       <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text">
         Create Assignments Now
       </h2>
