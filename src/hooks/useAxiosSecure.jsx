@@ -8,6 +8,7 @@ const axiosSecure = axios.create({
 import React, { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function useAxiosSecure() {
   const { signOutUser } = useAuth();
@@ -21,6 +22,12 @@ export default function useAxiosSecure() {
         if (error.status === 401 || error.status === 403) {
           signOutUser().then(() => {
             navigate("/login");
+            if (error.status === 401) {
+              return toast.error("Unauthorized Access, Please login again");
+            }
+            if (error.status === 403) {
+              return toast.error("Forbidden Access, Please login again");
+            }
           });
         }
       }

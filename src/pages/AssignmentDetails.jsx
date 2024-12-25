@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { compareAsc } from "date-fns";
+import toast from "react-hot-toast";
 
 Modal.setAppElement("#root");
 
@@ -54,8 +56,10 @@ export default function AssignmentDetails() {
       obtainedMarks: "Not Rated",
       feedback: "Not Checked",
     };
-    // console.log(formData);
-    // if (user?.email !== assignment?.creator?.email) {
+
+    if (compareAsc(new Date(), new Date(dueDate)) === 1)
+      return toast.error("Deadline Crossed, Submission Forbidden!");
+
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_URL}/add-submission`,
@@ -72,14 +76,6 @@ export default function AssignmentDetails() {
     } catch (err) {
       console.error("Error while posting data:", err);
     }
-    // } else {
-    // Swal.fire({
-    //   title: "Error!",
-    //   text: "The creator of the assignment can not submit the assignment.",
-    //   icon: "error",
-    // });
-    // closeModal();
-    // }
   };
 
   return (

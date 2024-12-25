@@ -1,19 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import bgImg from "../assets/bgImg.png";
 import LoadingSpinner from "../components/LoadingSpinner";
+import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 Modal.setAppElement("#root");
 
 export default function PendingAssignments() {
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
   const { user } = useAuth();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   const {
     data: pendingSubmissions,
@@ -28,14 +27,18 @@ export default function PendingAssignments() {
       return data;
     },
   });
-  console.log(pendingSubmissions);
-  const handleSubmit = async (e, examineeEmail, id) => {
+
+  const handleSubmit = async (e, examineeEmail, id, assignmentMarks) => {
     e.preventDefault();
     const form = e.target;
     const marks = form.marks.value;
     const feedback = form.feedback.value;
     const formData = { marks, feedback, status: "completed" };
-    console.log({ marks, feedback, examineeEmail, email: user.email });
+
+    if (marks > assignmentMarks) {
+      return toast.error("You cannot give marks more than the total marks");
+    }
+
     if (user?.email !== examineeEmail) {
       try {
         const { data } = await axios.patch(
@@ -49,7 +52,7 @@ export default function PendingAssignments() {
             icon: "success",
           });
           refetch();
-          closeModal();
+          setSelectedSubmission(null); // Close modal
         }
       } catch (err) {
         console.error("Error while posting data:", err);
@@ -57,20 +60,21 @@ export default function PendingAssignments() {
     } else {
       Swal.fire({
         title: "Error!",
-        text: "The examinee can not give marks.",
+        text: "The examinee cannot give marks to himself.",
         icon: "error",
       });
-      closeModal();
+      setSelectedSubmission(null); // Close modal
     }
   };
+
   if (isLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
+    return <LoadingSpinner />;
   }
 
   return (
     <div className="mt-[5.5rem]">
       <div className="w-11/12 mx-auto">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
           Pending Assignments
         </h2>
         <p className="mt-4 text-center mb-6 lg:w-3/5 mx-auto text-gray-400">
@@ -78,12 +82,8 @@ export default function PendingAssignments() {
           completed or submitted. It helps users track deadlines, prioritize
           tasks, and stay on top of their academic responsibilities.
         </p>
-        <div
-          className="overflow-x-scroll"
-          style={{ overflowX: "scroll", whiteSpace: "nowrap" }}
-        >
+        <div className="overflow-x-scroll" style={{ overflowX: "scroll" }}>
           <table className="table text-center border-separate border-spacing-y-3 border-white w-full">
-            {/* head */}
             <thead
               style={{
                 backgroundImage: `url(${bgImg})`,
@@ -118,73 +118,11 @@ export default function PendingAssignments() {
                     </td>
                     <td className="py-3 px-6">
                       <button
-                        onClick={openModal}
+                        onClick={() => setSelectedSubmission(submission)}
                         className="btn bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl transition-transform"
                       >
                         Give Marks
                       </button>
-                      <Modal
-                        isOpen={isModalOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Example Modal"
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg max-w-lg w-full shadow-lg"
-                        overlayClassName="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10"
-                      >
-                        <div>
-                          <p className="mb-2">
-                            <span className="font-bold">Google Docs Link:</span>{" "}
-                            <a
-                              target="_blank"
-                              href={submission?.link}
-                              className="text-primary underline"
-                            >
-                              {submission?.link}
-                            </a>
-                          </p>
-                          <p className="mb-4">
-                            <span className="font-bold">Note:</span>{" "}
-                            {submission?.note}
-                          </p>
-                          <form
-                            onSubmit={(e) =>
-                              handleSubmit(
-                                e,
-                                submission?.examinee?.email,
-                                submission?._id
-                              )
-                            }
-                            className="card-body space-y-4"
-                          >
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">Marks</span>
-                              </label>
-                              <input
-                                type="number"
-                                placeholder="marks"
-                                name="marks"
-                                className="input input-bordered w-full"
-                                required
-                              />
-                            </div>
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">Feedback</span>
-                              </label>
-                              <textarea
-                                className="textarea textarea-bordered w-full"
-                                name="feedback"
-                                placeholder="Give feedback"
-                              ></textarea>
-                            </div>
-                            <div className="form-control mt-6">
-                              <button className="btn bg-primary text-white px-4 py-2 rounded-lg shadow hover:bg-secondary transition-colors">
-                                Submit
-                              </button>
-                            </div>
-                          </form>
-                        </div>
-                      </Modal>
                     </td>
                   </tr>
                 ))
@@ -199,6 +137,75 @@ export default function PendingAssignments() {
           </table>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedSubmission && (
+        <Modal
+          isOpen={!!selectedSubmission}
+          onRequestClose={() => setSelectedSubmission(null)}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg max-w-lg w-full shadow-lg"
+          overlayClassName="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10"
+        >
+          <div>
+            <p className="mb-2">
+              <span className="font-bold">Submitted Link:</span>{" "}
+              <a
+                target="_blank"
+                href={selectedSubmission?.link}
+                className="text-primary underline"
+              >
+                Google Docs Link
+              </a>
+            </p>
+            <p className="mb-4">
+              <span className="font-bold">Submitted Note:</span>{" "}
+              {selectedSubmission?.note}
+            </p>
+            <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary text-center text-transparent bg-clip-text">
+              Give Marks
+            </h2>
+            <form
+              onSubmit={(e) =>
+                handleSubmit(
+                  e,
+                  selectedSubmission?.examinee?.email,
+                  selectedSubmission?._id,
+                  selectedSubmission?.assignmentMarks
+                )
+              }
+              className="card-body space-y-4"
+            >
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Marks</span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="marks"
+                  name="marks"
+                  className="input input-bordered w-full"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Feedback</span>
+                </label>
+                <textarea
+                  className="textarea textarea-bordered w-full"
+                  name="feedback"
+                  placeholder="Give feedback"
+                ></textarea>
+              </div>
+              <div className="form-control mt-6">
+                <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
