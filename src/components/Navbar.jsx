@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/book.png";
 import useAuth from "../hooks/useAuth";
@@ -10,6 +10,7 @@ export default function Navbar() {
   const { user, signOutUser } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = window.location.pathname; // Or use useLocation() from React Router if you're using it
+  // const themeRef = useRef(null); // Reference to control the checkbox directly
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,18 +29,19 @@ export default function Navbar() {
       toast.success("Logout successful");
     });
   };
+  // Theme toggle state and effect using new key in localStorage
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
+    () => localStorage.getItem("storeDarkLight") || "light"
   );
-  const themeToggle = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
+
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("storeDarkLight", theme); // Changed the key here
   }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
     <div
@@ -167,7 +169,7 @@ export default function Navbar() {
             <label className="swap swap-rotate ml-2">
               {/* this hidden checkbox controls the state */}
               <input
-                onChange={themeToggle}
+                onChange={toggleTheme}
                 checked={theme === "dark"}
                 type="checkbox"
                 className="theme-controller"

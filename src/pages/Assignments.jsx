@@ -13,8 +13,6 @@ export default function Assignments() {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
   const { user } = useAuth();
-  const searchInputRef = useRef(null);
-  const [debouncedSearch, setDebouncedSearch] = useState(search);
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -76,22 +74,6 @@ export default function Assignments() {
       });
     }
   };
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(search);
-    }, 500); // Debounce delay (500ms)
-
-    return () => clearTimeout(timer); // Cleanup on unmount or search change
-  }, [search]);
-  useEffect(() => {
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [debouncedSearch]); // Ensures focus remains even during updates
-
-  if (isLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
 
   return (
     <div className="mt-24 bg-transparent w-11/12 mx-auto">
@@ -127,7 +109,6 @@ export default function Assignments() {
 
         <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
           <input
-            ref={searchInputRef}
             onChange={(e) => setSearch(e.target.value)}
             value={search}
             className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
@@ -138,8 +119,9 @@ export default function Assignments() {
           />
         </div>
       </div>
+      {isLoading && <LoadingSpinner></LoadingSpinner>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-12 lg:grid-cols-3 gap-6 ">
         {assignments?.length ? (
           assignments?.map((assignment) => (
             <AssignmentCard

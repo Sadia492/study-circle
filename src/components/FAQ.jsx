@@ -1,5 +1,6 @@
 import React from "react";
 import faqImg from "../assets/your-skill.jpg";
+import { easeInOut, motion } from "framer-motion";
 
 export default function FAQ() {
   return (
@@ -21,7 +22,14 @@ export default function FAQ() {
           />
         </div>
         <div className="flex-1 space-y-6">
-          <div className="collapse collapse-plus bg-gradient-to-br from-secondary to-primary text-white">
+          <motion.div
+            animate={{
+              x: [0],
+              y: [0, 25, 0],
+              transition: { duration: 5, ease: easeInOut, repeat: Infinity },
+            }}
+            className="collapse collapse-plus bg-gradient-to-br from-secondary to-primary text-white"
+          >
             <input type="radio" name="my-accordion-3" defaultChecked />
             <div className="collapse-title text-xl font-medium">
               📝 How can I create an assignment?
@@ -35,8 +43,15 @@ export default function FAQ() {
                 assignment.
               </p>
             </div>
-          </div>
-          <div className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white">
+          </motion.div>
+          <motion.div
+            animate={{
+              x: [0],
+              y: [0, 25, 0],
+              transition: { duration: 5, ease: easeInOut, repeat: Infinity },
+            }}
+            className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white"
+          >
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               👩‍🏫 Can I update or delete my assignment?
@@ -48,8 +63,15 @@ export default function FAQ() {
                 not have the option to do so.
               </p>
             </div>
-          </div>
-          <div className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white">
+          </motion.div>
+          <motion.div
+            animate={{
+              x: [0],
+              y: [0, 25, 0],
+              transition: { duration: 5, ease: easeInOut, repeat: Infinity },
+            }}
+            className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white"
+          >
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               📚 How can I submit an assignment?
@@ -62,8 +84,15 @@ export default function FAQ() {
                 and a brief note.
               </p>
             </div>
-          </div>
-          <div className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white">
+          </motion.div>
+          <motion.div
+            animate={{
+              x: [0],
+              y: [0, 25, 0],
+              transition: { duration: 5, ease: easeInOut, repeat: Infinity },
+            }}
+            className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white"
+          >
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               🕑 How do I give marks to other students' assignments?
@@ -75,8 +104,15 @@ export default function FAQ() {
                 submitted by others. You cannot grade your own assignments.
               </p>
             </div>
-          </div>
-          <div className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white">
+          </motion.div>
+          <motion.div
+            animate={{
+              x: [0],
+              y: [0, 25, 0],
+              transition: { duration: 5, ease: easeInOut, repeat: Infinity },
+            }}
+            className="collapse collapse-plus bg-base-200 bg-gradient-to-br from-secondary to-primary text-white"
+          >
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               🎓 Can I view my attempted assignments?
@@ -88,7 +124,7 @@ export default function FAQ() {
                 any feedback from the grader.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

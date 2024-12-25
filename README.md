@@ -36,6 +36,7 @@ This project is built with the following technologies:
   - react-tooltip
   - react-icons
   - react-spinner
+  - framer-motion
 
 - **Backend:**
   - Firebase Authentication

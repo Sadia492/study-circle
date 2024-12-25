@@ -7,6 +7,7 @@ import clockIcon from "../assets/clock.png";
 import searchIcon from "../assets/search.png";
 import feedbackIcon from "../assets/conversation.png";
 import folderIcon from "../assets/folder.png";
+import { easeInOut, motion } from "framer-motion";
 
 export default function Features() {
   // React Slick settings
@@ -48,7 +49,7 @@ export default function Features() {
           <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-15% to-secondary text-transparent bg-clip-text">
             Features
           </h2>
-          <p className="text-gray-400 mt-4 lg:w-3/5 mx-auto">
+          <p className="text-gray-400 mt-4 lg:w-3/5">
             With easy-to-use tools and real-time updates, our feature section
             ensures that every user can manage their tasks and interactions
             effortlessly.
@@ -74,9 +75,19 @@ export default function Features() {
         <Slider ref={sliderRef} {...settings}>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={graduateIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">Collaborative Learning</h3>
               <p className="text-gray-600 mt-2">
                 Connect with friends to create, complete, and evaluate
@@ -87,9 +98,19 @@ export default function Features() {
           </div>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={documentIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">Assignment Management</h3>
               <p className="text-gray-600 mt-2">
                 Effortlessly create, update, view, and delete assignments as
@@ -100,9 +121,19 @@ export default function Features() {
           </div>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={clockIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">Pending Reviews</h3>
               <p className="text-gray-600 ">
                 Access and grade pending assignments submitted by your friends.
@@ -112,9 +143,19 @@ export default function Features() {
           </div>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={searchIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">Dynamic Filtering</h3>
               <p className="text-gray-600 mt-2">
                 Filter assignments by difficulty or search by keywords to find
@@ -125,9 +166,19 @@ export default function Features() {
           </div>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={feedbackIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">Assignment Feedback</h3>
               <p className="text-gray-600 mt-2">
                 Provide grades and detailed feedback for your friends'
@@ -138,9 +189,19 @@ export default function Features() {
           </div>
           <div className="p-4">
             <div className="bg-gray-200 p-8 rounded-2xl border-2 border-black/40 hover:bg-white hover:shadow-custom-light hover:border-none transition-all duration-500 space-y-4 between h-72 overflow-hidden">
-              <div className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg">
+              <motion.div
+                animate={{
+                  rotate: "360deg",
+                  transition: {
+                    duration: 5,
+                    ease: easeInOut,
+                    repeat: Infinity,
+                  },
+                }}
+                className="bg-gradient-to-tr from-secondary to-primary w-fit p-2 rounded-lg"
+              >
                 <img className="w-10" src={folderIcon} alt="" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-xl">JWT-Protected Routes</h3>
               <p className="text-gray-600 mt-2">
                 Safeguard private pages with JWT tokens for authenticated user
