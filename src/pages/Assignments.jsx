@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 export default function Assignments() {
   const queryClient = useQueryClient();
@@ -14,6 +15,7 @@ export default function Assignments() {
   const [search, setSearch] = useState("");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const {
     data: assignments,
@@ -33,6 +35,10 @@ export default function Assignments() {
   });
 
   const handleDelete = async (id, email) => {
+    if (!user) {
+      return navigate("/login");
+    }
+
     if (user.email === email) {
       const result = await Swal.fire({
         title: "Are you sure?",

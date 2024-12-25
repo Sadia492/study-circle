@@ -57,6 +57,10 @@ export default function UpdateAssignment() {
     const difficulty = form.difficulty.value;
     const dueDate = startDate;
 
+    if (description.length < 20) {
+      return toast.error("Description should be at least 20 characters long");
+    }
+
     const formData = {
       title,
       description,
@@ -291,7 +295,7 @@ export default function UpdateAssignment() {
               <span className="label-text">Thumbnail Image URL</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="image"
               defaultValue={image}
               placeholder="thumbnail"

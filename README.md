@@ -44,6 +44,7 @@ This project is built with the following technologies:
   - Axios (for API calls)
   - Date-fns (for date management)
   - Express
+  - jsonwebtoken
   - Cors
   - MongoDB
   - Dotenv
