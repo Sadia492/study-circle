@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import bgHex from "../assets/bgImage2.jpg";
+
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
