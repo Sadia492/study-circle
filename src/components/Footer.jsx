@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <div className="bg-base-200 text-base-content">
+    <div className="bg-base-300 text-base-content border-t-2">
       <footer className="w-11/12 mx-auto footer py-16">
         <aside className="">
           <img className="w-16" src={logo} alt="" />
@@ -69,14 +69,14 @@ export default function Footer() {
           </div>
         </nav>
       </footer>
-      <footer className="footer-center border-t-2 text-base-content p-4">
+      <div className="footer-center border-t border-white text-base-content p-4">
         <aside>
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
             StudyCircle
           </p>
         </aside>
-      </footer>
+      </div>
     </div>
   );
 }

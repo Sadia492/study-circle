@@ -50,7 +50,6 @@ export default function CreateAssignments() {
           icon: "success",
         });
         form.reset();
-        navigate("/assignments");
       }
     } catch (err) {
       toast.err(err.message);

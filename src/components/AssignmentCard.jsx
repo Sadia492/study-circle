@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import gif from "../assets/animation/icons8-eye.gif";
+
 import { FaEye, FaPen, FaTrashAlt } from "react-icons/fa";
 
 export default function AssignmentCard({ assignment, handleDelete }) {
@@ -31,10 +31,6 @@ export default function AssignmentCard({ assignment, handleDelete }) {
           <p>{description}</p>
           <div className="card-actions my-2 justify-start">
             <div className="badge badge-outline">Marks: {marks}</div>
-
-            <div className="badge badge-outline">
-              Due Date: {dueDate.split("T")[0]}
-            </div>
           </div>
           <div className="card-actions justify-start">
             <Link to={`/details/${_id}`}>

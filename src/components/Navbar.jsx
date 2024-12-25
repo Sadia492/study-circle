@@ -149,12 +149,18 @@ export default function Navbar() {
                     </NavLink>
                   </ul>
                 </div>
-                <Link onClick={handleSignOut} className="btn">
+                <Link
+                  onClick={handleSignOut}
+                  className="btn bg-gradient-to-r from-primary to-secondary text-white"
+                >
                   Logout
                 </Link>
               </>
             ) : (
-              <Link className="btn" to="/login">
+              <Link
+                className="btn bg-gradient-to-r from-primary to-secondary text-white"
+                to="/login"
+              >
                 Login
               </Link>
             )}

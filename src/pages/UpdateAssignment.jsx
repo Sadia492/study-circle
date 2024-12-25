@@ -8,28 +8,33 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function UpdateAssignment() {
   const { user } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
-  const [assignment, setAssignment] = useState();
+  // const [assignment, setAssignment] = useState();
   const [startDate, setStartDate] = useState(new Date());
   const axiosSecure = useAxiosSecure();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axiosSecure.get(`/assignment/${id}`);
-        setAssignment(data);
-        if (data.dueDate) {
-          setStartDate(new Date(data.dueDate)); // Update startDate after fetch
-        }
-      } catch (error) {
-        toast.error(error.message);
+
+  const {
+    data: assignment,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["updateAssignment"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/assignment/${id}`);
+      if (data.dueDate) {
+        setStartDate(new Date(data.dueDate)); // Update startDate after fetch
       }
-    };
-    fetchData();
-  }, [id]);
+      return data;
+    },
+  });
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   const {
     title,
