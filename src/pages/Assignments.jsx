@@ -6,17 +6,22 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export default function Assignments() {
   const queryClient = useQueryClient();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
-  // const [searchText, setSearchText] = useState("");
   const { user } = useAuth();
   const searchInputRef = useRef(null);
   const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const axiosSecure = useAxiosSecure();
 
-  const { data: assignments, isLoading } = useQuery({
+  const {
+    data: assignments,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["assignments", { filter, search }],
     queryFn: async () => {
       const { data } = await axios.get(
@@ -43,25 +48,19 @@ export default function Assignments() {
 
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(
-            `${import.meta.env.VITE_URL}/assignment/${id}`
-          );
-          console.log(data);
+          const { data } = await axiosSecure.delete(`/assignment/${id}`);
 
           // Show success message
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
-
-          // Update the cache or refetch data if necessary
-          queryClient.setQueryData(["assignments"], (oldData) => {
-            if (!oldData) return [];
-            return oldData.filter((assignment) => assignment._id !== id);
-          });
+          if (data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            // refetch data to refresh ui
+            refetch();
+          }
         } catch (error) {
-          console.error("Error deleting assignment:", error);
           Swal.fire({
             title: "Error!",
             text: "There was an issue deleting the assignment.",

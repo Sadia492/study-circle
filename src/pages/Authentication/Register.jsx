@@ -14,7 +14,7 @@ export default function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(e.target.name.value);
+
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;

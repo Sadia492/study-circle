@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 export default function UpdateAssignment() {
   const { user } = useAuth();
@@ -24,7 +25,7 @@ export default function UpdateAssignment() {
           setStartDate(new Date(data.dueDate)); // Update startDate after fetch
         }
       } catch (error) {
-        console.error("Error fetching assignment:", error);
+        toast.error(error.message);
       }
     };
     fetchData();
@@ -63,7 +64,7 @@ export default function UpdateAssignment() {
         name: user?.displayName,
       },
     };
-    // console.log(user?.email, creator.email);
+
     if (user?.email === assignment?.creator?.email) {
       try {
         const { data } = await axiosSecure.put(
@@ -79,7 +80,7 @@ export default function UpdateAssignment() {
           navigate("/assignments");
         }
       } catch (err) {
-        console.error("Error while posting data:", err);
+        toast.error(err.message);
       }
     } else {
       Swal.fire({
