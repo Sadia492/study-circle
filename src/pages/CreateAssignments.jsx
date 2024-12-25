@@ -6,10 +6,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import bgHex from "../assets/bgImage2.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +21,9 @@ export default function CreateAssignments() {
     const image = form.image.value;
     const difficulty = form.difficulty.value;
     const dueDate = startDate;
+    if (description.length < 20) {
+      return toast.error("Description should be at least 20 characters long");
+    }
 
     const formData = {
       title,
@@ -44,6 +49,8 @@ export default function CreateAssignments() {
           text: "Assignment Created successfully",
           icon: "success",
         });
+        form.reset();
+        navigate("/assignments");
       }
     } catch (err) {
       toast.err(err.message);
@@ -195,7 +202,9 @@ export default function CreateAssignments() {
           fill="url(#grad2)"
         />
       </svg>
-      <div className="card w-3/5 mx-auto">
+      {/* Decorative SVG background (Stars) */}
+
+      <div className="card w-3/5 mx-auto ">
         <form
           onSubmit={handleSubmit}
           className="card-body grid grid-cols-1 md:grid-cols-2 gap-x-6"
@@ -208,7 +217,7 @@ export default function CreateAssignments() {
               type="text"
               name="title"
               placeholder="Title"
-              className="input input-bordered rounded-full"
+              className="input input-bordered "
               required
             />
           </div>
@@ -218,7 +227,7 @@ export default function CreateAssignments() {
             </label>
             <textarea
               name="description"
-              className="textarea textarea-bordered rounded-3xl"
+              className="textarea textarea-bordered "
               placeholder="description"
             ></textarea>
           </div>
@@ -230,7 +239,7 @@ export default function CreateAssignments() {
               type="number"
               name="marks"
               placeholder="marks"
-              className="input input-bordered rounded-full"
+              className="input input-bordered "
               required
             />
           </div>
@@ -239,10 +248,10 @@ export default function CreateAssignments() {
               <span className="label-text">Thumbnail Image URL</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="image"
               placeholder="thumbnail"
-              className="input input-bordered rounded-full"
+              className="input input-bordered "
               required
             />
           </div>
@@ -252,7 +261,7 @@ export default function CreateAssignments() {
             </label>
             <select
               name="difficulty"
-              className="select select-bordered rounded-full w-full"
+              className="select select-bordered  w-full"
               required
               defaultValue="assignment difficulty level"
             >
@@ -267,7 +276,7 @@ export default function CreateAssignments() {
               <span className="label-text">Due Date</span>
             </label>
             <DatePicker
-              className="w-full input input-bordered rounded-full"
+              className="w-full input input-bordered "
               selected={startDate}
               onChange={(date) => setStartDate(date)}
             />

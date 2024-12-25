@@ -152,7 +152,9 @@ export default function AssignmentDetails() {
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-secondary">Submit</button>
+                  <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
+                    Submit
+                  </button>
                 </div>
               </form>
             </Modal>

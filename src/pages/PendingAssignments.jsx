@@ -100,7 +100,7 @@ export default function PendingAssignments() {
               </tr>
             </thead>
             <tbody>
-              {pendingSubmissions &&
+              {pendingSubmissions.length ? (
                 pendingSubmissions.map((submission, idx) => (
                   <tr
                     key={submission._id}
@@ -187,7 +187,14 @@ export default function PendingAssignments() {
                       </Modal>
                     </td>
                   </tr>
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-2xl font-bold text-primary">
+                    No Pending Assignment Found
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

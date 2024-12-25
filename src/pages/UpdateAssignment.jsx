@@ -91,8 +91,151 @@ export default function UpdateAssignment() {
   };
 
   return (
-    <div>
-      <div className="card bg-base-100 w-full  shadow-2xl">
+    <div className="mt-24">
+      <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-75% to-secondary text-transparent bg-clip-text text-center">
+        Update Your Assignment
+      </h2>
+      <p className="text-gray-400 mt-4 mx-auto lg:w-3/5 text-center">
+        The "Update Assignments" page allows users to modify the details of
+        existing assignments, including changing the title, difficulty level,
+        and submission requirements.{" "}
+      </p>
+      {/* Decorative Background SVGs */}
+      {/* top */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute top-20 left-10 w-60  animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad1)"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute top-20 left-[4.3rem] w-60  animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad1)"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute top-20 left-24 w-60  animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad1)"
+        />
+      </svg>
+      {/* bottom */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute bottom-0 right-10 w-60 animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad2)"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute bottom-0 right-[4.3rem] w-60 animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad2)"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute bottom-0 right-24 w-60 animate-bounce hidden lg:flex"
+        viewBox="0 0 512 512"
+      >
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "#F8B200", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#BA1B1D", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M269.723 232.29h-27.427c-5.523 0-10 4.477-10 10v27.427c0 5.523 4.477 10 10 10h27.427c5.523 0 10-4.477 10-10V242.29c0-5.522-4.477-10-10-10z"
+          fill="url(#grad2)"
+        />
+      </svg>
+      <div className="card w-3/5 mx-auto ">
         <form
           onSubmit={handleSubmit}
           className="card-body grid grid-cols-1 md:grid-cols-2 gap-x-6"
@@ -176,7 +319,9 @@ export default function UpdateAssignment() {
             />
           </div>
           <div className="form-control mt-6 md:col-span-2">
-            <button className="btn btn-primary">Update Assignment</button>
+            <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
+              Update Assignment
+            </button>
           </div>
         </form>
       </div>

@@ -38,8 +38,14 @@ export default function MyAttemptedAssignments() {
         >
           <table className="table text-center border-separate border-spacing-y-3 w-full">
             {/* head */}
-            <thead>
-              <tr className="bg-gradient-to-r from-primary to-secondary text-white rounded-lg">
+            <thead
+              style={{
+                backgroundImage: `url(${bgImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <tr className=" text-white rounded-lg">
                 <th className="py-3 px-6">#</th>
                 <th className="py-3 px-6">Assignment Title</th>
                 <th className="py-3 px-6">Status</th>
@@ -49,7 +55,7 @@ export default function MyAttemptedAssignments() {
               </tr>
             </thead>
             <tbody>
-              {submissions &&
+              {submissions.length ? (
                 submissions.map((submission, idx) => (
                   <tr
                     key={submission._id}
@@ -85,7 +91,14 @@ export default function MyAttemptedAssignments() {
                       {submission.feedback}
                     </td>
                   </tr>
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-2xl font-bold text-primary">
+                    No Assignment Attempted
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
