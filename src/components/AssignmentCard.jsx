@@ -15,6 +15,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
     creator: { email, name },
   } = assignment || {};
   //   const handleDelete = ()
+
   return (
     <div className="hover:scale-105 transform transition duration-300 ease-in-out">
       <div className="card bg-base-100 shadow-xl h-full">
@@ -38,7 +39,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
                 <FaEye size={40} />
               </button>
             </Link>
-            <Link to={`/update/${_id}`}>
+            <Link to={`/assignment/update/${_id}`}>
               <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
                 <FaPen size={30} />
               </button>

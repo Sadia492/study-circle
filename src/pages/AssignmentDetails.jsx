@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -20,24 +20,33 @@ export default function AssignmentDetails() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const axiosSecure = useAxiosSecure();
+  const [assignment, setAssignment] = useState();
+  const [localLoading, setLocalLoading] = useState([]);
 
-  const { data: assignment, isLoading } = useQuery({
-    queryKey: ["assignment"],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/assignment/${id}`);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLocalLoading(true);
+        const { data } = await axiosSecure.get(`/assignment/${id}`);
+        setAssignment(data);
+      } catch (err) {
+        toast.error(err.message);
+      } finally {
+        setLocalLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
 
-      return data;
-    },
-  });
+  if (localLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   const { title, description, marks, image, difficulty, dueDate, creator } =
     assignment || {};
 
   // Safely destructure name and email from creator
   const { name, email } = creator || {};
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +90,7 @@ export default function AssignmentDetails() {
       <Helmet>
         <title>StudyCircle | Details</title>
       </Helmet>
-      {isLoading && <LoadingSpinner></LoadingSpinner>}
+      {localLoading && <LoadingSpinner></LoadingSpinner>}
       <div className="flex lg:flex-row flex-col rounded-3xl mb-20 bg-base-100 gap-8 justify-center items-center p-8 shadow-xl w-11/12 mx-auto mt-20">
         <figure className="flex-1">
           <img className="w-full rounded-3xl" src={image} alt="Album" />

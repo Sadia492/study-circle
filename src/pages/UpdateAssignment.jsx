@@ -14,25 +14,30 @@ export default function UpdateAssignment() {
   const { user } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
-  // const [assignment, setAssignment] = useState();
+  const [assignment, setAssignment] = useState();
   const [startDate, setStartDate] = useState(new Date());
   const axiosSecure = useAxiosSecure();
+  const [localLoading, setLocalLoading] = useState(true);
 
-  const {
-    data: assignment,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["updateAssignment"],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/assignment/${id}`);
-      if (data.dueDate) {
-        setStartDate(new Date(data.dueDate)); // Update startDate after fetch
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLocalLoading(true);
+        const { data } = await axiosSecure.get(`/assignment/${id}`);
+        setAssignment(data);
+        if (data.dueDate) {
+          setStartDate(new Date(data.dueDate)); // Update startDate after fetch
+        }
+      } catch (err) {
+        toast.error(err.message);
+      } finally {
+        setLocalLoading(false);
       }
-      return data;
-    },
-  });
-  if (isLoading) {
+    };
+    fetchData();
+  }, [id]);
+
+  if (localLoading) {
     return <LoadingSpinner></LoadingSpinner>;
   }
 

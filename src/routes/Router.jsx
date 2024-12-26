@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/update/:id",
+        path: "/assignment/update/:id",
         element: (
           <PrivateRoute>
             <UpdateAssignment></UpdateAssignment>
