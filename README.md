@@ -1,15 +1,14 @@
 # StudyCircle 📚🌐
 
+## Project Overview
+
 Welcome to **StudyCircle**, a collaborative online platform designed for students to study together, create assignments, and grade each other's work! Whether you're working on group assignments or helping a friend out, **StudyCircle** is here to make learning fun and effective.
 
-## 🌐 Live Site
+## 🚀Technologies Used
 
-Visit the live version of **StudyCircle** here:
-
-- [**StudyCircle Live Site**](https://study-circle-face7.web.app/)
-- [**StudyCircle Alternative Live Site**](https://study-circle.netlify.app/)
-
-Check it out and start collaborating with your friends today! 🚀
+- **Frontend:** React, Tailwind CSS, DaisyUI
+- **Backend:** Firebase Authentication and MongoDB
+- **Deployment:** Vercel/Netlify
 
 ## 🚀Key Features
 
@@ -48,3 +47,20 @@ This project is built with the following technologies:
   - Cors
   - MongoDB
   - Dotenv
+ 
+  
+## 🌐 Live Site
+
+Visit the live version of **StudyCircle** here:
+
+- [**StudyCircle Live Site**](https://study-circle-face7.web.app/)
+- [**StudyCircle Alternative Live Site**](https://study-circle.netlify.app/)
+
+Check it out and start collaborating with your friends today! 🚀
+ 
+  ## 🛠️ Installation
+Use the `npm install` command to install the dependencies.
+
+## 🛠️ Run
+Use the `npm run dev` command to run the project in your local server.
+
