@@ -127,7 +127,7 @@ export default function Assignments() {
       </div>
       {isLoading && <LoadingSpinner></LoadingSpinner>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-12 lg:grid-cols-3 gap-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-12 lg:grid-cols-4 gap-6 ">
         {!isLoading && assignments?.length ? (
           assignments?.map((assignment) => (
             <AssignmentCard

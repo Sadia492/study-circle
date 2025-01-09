@@ -19,7 +19,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
   return (
     <div className="hover:scale-105 transform transition duration-300 ease-in-out">
       <div className="card bg-base-100 shadow-xl h-full">
-        <figure className="h-64 w-full">
+        <figure className="h-48 w-full">
           <img className="h-full object-cover w-full" src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
@@ -29,7 +29,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
               {difficulty}
             </div>
           </h2>
-          <p>{description}</p>
+          <p className="font-medium">{description.substring(0, 80)}...</p>
           <div className="card-actions my-2 justify-start">
             <div className="badge badge-outline">Marks: {marks}</div>
           </div>
