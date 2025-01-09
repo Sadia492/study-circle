@@ -13,6 +13,7 @@ export default function Assignments() {
   const queryClient = useQueryClient();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("sort by"); // Default sorting order
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -80,6 +81,25 @@ export default function Assignments() {
       });
     }
   };
+  const handleSort = (e) => {
+    const sortOrder = e.target.value;
+    setSort(sortOrder);
+
+    // Directly sort the assignments in state
+    if (assignments) {
+      const sortedData = [...assignments].sort((a, b) => {
+        if (sortOrder === "asc") {
+          return a.marks - b.marks;
+        } else if (sortOrder === "dsc") {
+          return b.marks - a.marks;
+        }
+        return 0;
+      });
+
+      // Update the assignments in the query cache to reflect sorting
+      queryClient.setQueryData(["assignments", { filter, search }], sortedData);
+    }
+  };
 
   return (
     <div className="mt-24 bg-transparent w-11/12 mx-auto">
@@ -104,7 +124,7 @@ export default function Assignments() {
             value={filter}
             name="difficulty"
             id="difficulty"
-            className="border p-4 rounded-lg"
+            className="border-2  border-primary p-4 rounded-lg"
           >
             <option value="">Filter By Difficulty Level</option>
             <option value="easy">easy</option>
@@ -113,16 +133,27 @@ export default function Assignments() {
           </select>
         </div>
 
-        <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+        <div className="flex flex-col md:flex-row justify-center items-center">
           <input
             onChange={(e) => setSearch(e.target.value)}
             value={search}
-            className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+            className="border-2  border-primary p-4 rounded-lg"
             type="text"
             name="search"
             placeholder="Enter Assignment Title"
             aria-label="Enter Assignment Title"
           />
+        </div>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
+          <select
+            className="border-2 border-primary p-4 rounded-lg"
+            value={sort}
+            onChange={handleSort}
+          >
+            <option value="">Sort By Marks</option>
+            <option value="asc">Ascending</option>
+            <option value="dsc">Descending</option>
+          </select>
         </div>
       </div>
       {isLoading && <LoadingSpinner></LoadingSpinner>}

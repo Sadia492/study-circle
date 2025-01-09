@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/book.png";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -17,55 +18,59 @@ export default function Footer() {
         </aside>
         <nav>
           <h6 className="text-xl font-bold">Get Help</h6>
-          <a className="hover:text-secondary">Contact Us</a>
-          <a className="hover:text-secondary">Latest Articles</a>
-          <a className="hover:text-secondary">FAQs</a>
+          <Link to="/" className="hover:text-secondary">
+            Home
+          </Link>
+          <Link to="/contact" className="hover:text-secondary">
+            Contact Us
+          </Link>
+          <Link to="/about" className="hover:text-secondary">
+            About
+          </Link>
         </nav>
-        <nav>
-          <h6 className="font-bold text-xl">Programs</h6>
-          <a className="hover:text-secondary">Art & Design</a>
-          <a className="hover:text-secondary">Business</a>
-          <a className="hover:text-secondary">IT & Software</a>
-          <a className="hover:text-secondary">Languages</a>
-          <a className="hover:text-secondary">Programming</a>
-        </nav>
+
         <nav>
           <h6 className="text-xl font-bold">Contact Us</h6>
-          <a className="hover:text-secondary">
+          <p className="">
             23 New Design Str,
             <br />
             10 Hudson Yards, USA
-          </a>
-          <a className="hover:text-secondary">Tel: + (123) 2500-567-8988</a>
-          <a className="hover:text-secondary">Email: support@lms.com</a>
+          </p>
+          <p className="">Tel: + (123) 2500-567-8988</p>
+          <p className="">Email: support@lms.com</p>
           <div className="flex flex-wrap  gap-4">
-            <a
-              href="/"
-              className=" text-2xl cursor-pointer hover:text-secondary"
-            >
-              <FaInstagram />
-            </a>
-
-            <a
-              href="/"
-              className=" text-2xl cursor-pointer hover:text-secondary"
-            >
-              <FaFacebook />
-            </a>
-
-            <a
-              href="/"
-              className=" text-2xl cursor-pointer hover:text-secondary"
-            >
-              <FaXTwitter />
-            </a>
-
-            <a
+            <Link
+              to="https://www.linkedin.com/in/sadia-afrin01/"
+              target="_blank"
               href="/"
               className="text-2xl cursor-pointer hover:text-secondary"
             >
               <FaLinkedin />
-            </a>
+            </Link>
+            <Link
+              target="_blank"
+              to="https://www.instagram.com/"
+              className=" text-2xl cursor-pointer hover:text-secondary"
+            >
+              <FaInstagram />
+            </Link>
+
+            <Link
+              target="_blank"
+              to="https://www.facebook.com/profile.php?id=100077898306645"
+              className=" text-2xl cursor-pointer hover:text-secondary"
+            >
+              <FaFacebook />
+            </Link>
+
+            <Link
+              to="https://twitter.com/"
+              target="_blank"
+              href="/"
+              className=" text-2xl cursor-pointer hover:text-secondary"
+            >
+              <FaXTwitter />
+            </Link>
           </div>
         </nav>
       </footer>

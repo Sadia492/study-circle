@@ -53,7 +53,7 @@ export default function Banner() {
     <div className="w-full">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={slide.id} className="relative max-h-[calc(100vh-150px)]">
+          <div key={slide.id} className="relative max-h-[calc(100vh-100px)]">
             <div className="relative w-full ">
               {/* Background Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-30 z-10"></div>

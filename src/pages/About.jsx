@@ -6,9 +6,9 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-r mt-12 from-primary to-secondary text-white">
+    <div className="min-h-screen  mt-12  ">
       {/* Header Section */}
-      <div className="flex flex-col items-center justify-center py-12">
+      <div className="flex flex-col items-center text-white bg-gradient-to-r from-primary to-secondary justify-center py-12">
         <motion.h1
           className="text-5xl font-bold mb-4"
           initial={{ opacity: 0, y: -50 }}
@@ -27,20 +27,19 @@ export default function About() {
           innovative ideas and causes that inspire them. Our goal is to empower
           individuals and organizations to make their dreams a reality.
         </motion.p>
+        {/* Animation Section */}
+        <motion.div
+          className="flex justify-center my-10"
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Lottie animationData={aboutAnimation} loop={true} className="w-96" />
+        </motion.div>
       </div>
 
-      {/* Animation Section */}
-      <motion.div
-        className="flex justify-center my-10"
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Lottie animationData={aboutAnimation} loop={true} className="w-96" />
-      </motion.div>
-
       {/* Mission Section */}
-      <div className="bg-white text-gray-800 py-16 px-8 rounded-t-3xl shadow-lg">
+      <div className="py-16 px-8 rounded-t-3xl shadow-lg">
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
