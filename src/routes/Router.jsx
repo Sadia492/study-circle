@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateAssignment from "../pages/UpdateAssignment";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import ErrorPage from "../components/ErrorPage";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
       {
         path: "/assignment/update/:id",

@@ -89,6 +89,12 @@ export default function Navbar() {
               >
                 <li>Pending Assignments</li>
               </NavLink>
+              <NavLink to="/contact">
+                <li>Contact Us </li>
+              </NavLink>
+              <NavLink to="/about">
+                <li>About Us</li>
+              </NavLink>
             </ul>
           </div>
           <a className="flex justify-center items-center gap-2">
@@ -114,6 +120,12 @@ export default function Navbar() {
                 to="/pending-assignments"
               >
                 <li>Pending Assignments</li>
+              </NavLink>
+              <NavLink to="/contact">
+                <li>Contact Us </li>
+              </NavLink>
+              <NavLink to="/about">
+                <li>About Us</li>
               </NavLink>
             </ul>
           </div>
