@@ -6,7 +6,7 @@ export default function FAQ() {
   return (
     <div className="w-11/12 mx-auto text-center mb-12">
       <h2 className="text-3xl font-bold bg-gradient-to-r from-primary from-0 to-70% to-secondary text-transparent bg-clip-text">
-        Frequently Asked Questions
+        Frequently Asked Questions are here
       </h2>
       <p className="text-gray-400 mt-4 lg:w-3/5 mx-auto">
         Have questions about using our platform? Check out our frequently asked
