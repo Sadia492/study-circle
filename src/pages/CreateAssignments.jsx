@@ -56,7 +56,7 @@ export default function CreateAssignments() {
     }
   };
   return (
-    <div className="mt-24 text-center">
+    <div className="mt-[5.5rem] text-center">
       <Helmet>
         <title>StudyCircle | Create</title>
       </Helmet>

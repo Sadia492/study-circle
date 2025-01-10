@@ -44,7 +44,7 @@ export default function AvailableAssignments() {
         </div>
         <Link
           to="/assignments"
-          className="flex justify-center items-center my-8"
+          className="flex justify-center items-center mt-8"
         >
           <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
             View All

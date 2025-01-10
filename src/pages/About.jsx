@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function About() {
   return (
-    <div className="min-h-screen  mt-12  ">
+    <div className="min-h-screen  mt-[5.5rem]  ">
       {/* Header Section */}
       <div className="flex flex-col items-center text-white bg-gradient-to-r from-primary to-secondary justify-center py-12">
         <motion.h1

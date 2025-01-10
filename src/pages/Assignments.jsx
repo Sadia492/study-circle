@@ -102,7 +102,7 @@ export default function Assignments() {
   };
 
   return (
-    <div className="mt-24 bg-transparent w-11/12 mx-auto">
+    <div className="mt-[5.5rem] bg-transparent w-11/12 mx-auto">
       <Helmet>
         <title>StudyCircle | Assignments</title>
       </Helmet>
@@ -124,7 +124,7 @@ export default function Assignments() {
             value={filter}
             name="difficulty"
             id="difficulty"
-            className="border-2  border-primary p-4 rounded-lg"
+            className="border-2  border-secondary p-4 rounded-lg"
           >
             <option value="">Filter By Difficulty Level</option>
             <option value="easy">easy</option>
@@ -137,7 +137,7 @@ export default function Assignments() {
           <input
             onChange={(e) => setSearch(e.target.value)}
             value={search}
-            className="border-2  border-primary p-4 rounded-lg"
+            className="border-2  border-secondary p-4 rounded-lg"
             type="text"
             name="search"
             placeholder="Enter Assignment Title"
@@ -146,7 +146,7 @@ export default function Assignments() {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
           <select
-            className="border-2 border-primary p-4 rounded-lg"
+            className="border-2 border-secondary p-4 rounded-lg"
             value={sort}
             onChange={handleSort}
           >

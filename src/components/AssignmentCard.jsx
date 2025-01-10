@@ -23,13 +23,15 @@ export default function AssignmentCard({ assignment, handleDelete }) {
           <img className="h-full object-cover w-full" src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
+          <h2 className="card-title text-left">
             {title}
             <div className="badge  bg-gradient-to-r from-primary to-secondary text-white">
               {difficulty}
             </div>
           </h2>
-          <p className="font-medium">{description.substring(0, 80)}...</p>
+          <p className="font-medium text-left">
+            {description.substring(0, 80)}...
+          </p>
           <div className="card-actions my-2 justify-start">
             <div className="badge badge-outline">Marks: {marks}</div>
           </div>

@@ -106,7 +106,7 @@ export default function UpdateAssignment() {
   };
 
   return (
-    <div className="mt-24">
+    <div className="mt-[5.5rem]">
       <Helmet>
         <title>StudyCircle | Update</title>
       </Helmet>

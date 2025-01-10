@@ -23,7 +23,7 @@ export default function Contact() {
   };
 
   return (
-    <div className=" flex flex-col justify-center mt-12">
+    <div className=" flex flex-col justify-center mt-[5.5rem]">
       <div className=" shadow-lg w-11/12 mx-auto rounded-lg flex justify-center items-center flex-col-reverse lg:flex-row p-8">
         <div className=" w-full flex-1">
           <h2 className="text-3xl font-semibold mb-4">Contact Us</h2>

@@ -43,7 +43,7 @@ export default function Register() {
   };
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-center mt-28 w-11/12 mx-auto gap-12 items-center">
+    <div className="flex flex-col-reverse lg:flex-row justify-center mt-[5.5rem] w-11/12 mx-auto gap-12 items-center">
       <Helmet>
         <title>StudyCircle | Register</title>
       </Helmet>
