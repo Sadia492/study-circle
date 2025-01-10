@@ -98,39 +98,6 @@ export default function Contact() {
           <img src={imgContact} alt="" />{" "}
         </div>
       </div>
-
-      {/* Contact Info Section */}
-      <div className="mt-12 text-center">
-        <p className="text-lg font-semibold">
-          Or contact us through our social media:
-        </p>
-        <div className="mt-4 flex justify-center gap-6">
-          <a
-            href="#"
-            className="text-primring-secondary hover:text-primring-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Facebook
-          </a>
-          <a
-            href="#"
-            className="text-primring-secondary hover:text-primring-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Twitter
-          </a>
-          <a
-            href="#"
-            className="text-primring-secondary hover:text-primring-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
