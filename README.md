@@ -1,8 +1,9 @@
 # StudyCircle 📚🌐
 
-![StudyCircle Banner](https://i.ibb.co.com/B2JMn0wJ/Screenshot-2025-01-04-135047.png)
 
-## Project Overview
+![StudyCircle Banner](https://i.ibb.co.com/B2JMn0wJ/Screenshot-2025-01-04-135047.png)  
+
+## Overview 🚀  
 
 Welcome to **StudyCircle**, a collaborative online platform designed for students to study together, create assignments, and grade each other's work! Whether you're working on group assignments or helping a friend out, **StudyCircle** is here to make learning fun and effective.
 
