@@ -9,7 +9,7 @@ export default function ErrorPage() {
       <div className="lg:w-1/2 mx-auto">
         <img src={errorImg} alt="Error" />
       </div>
-      <h2 className="text-3xl font-bold bg-gradient-to-r from-primary mb-6 to-secondary text-transparent bg-clip-text text-center">
+      <h2 className="text-3xl font-bold text-primary mb-6 text-center">
         Page Not Found
       </h2>
       <div className="text-center">
