@@ -11,8 +11,7 @@ export default function AssignmentCard({ assignment, handleDelete }) {
     marks,
     image,
     difficulty,
-    dueDate,
-    creator: { email, name },
+    creator: { email },
   } = assignment || {};
   //   const handleDelete = ()
 
