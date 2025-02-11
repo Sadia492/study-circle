@@ -94,7 +94,7 @@ export default function About() {
               <motion.img
                 src="https://i.ibb.co.com/S6ySvTD/sendle-vege-threads-photo-elin-bandmann-photography-27-1024x683.jpg"
                 alt="Team Member"
-                className="rounded-full w-32 mx-auto mb-4"
+                className="rounded-full w-32 h-32 object-cover mx-auto mb-4"
                 whileHover={{ scale: 1.1 }}
               />
               <h3 className="text-xl font-semibold">Sarah Johnson</h3>
