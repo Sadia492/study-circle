@@ -83,7 +83,7 @@ export default function About() {
               <motion.img
                 src="https://i.ibb.co.com/k1yhwBv/gettyimages-1273332069-612x612.jpg"
                 alt="Team Member"
-                className="rounded-full w-32 mx-auto mb-4"
+                className="rounded-full w-32 h-32 object-cover mx-auto mb-4"
                 whileHover={{ scale: 1.1 }}
               />
               <h3 className="text-xl font-semibold">Jane Smith</h3>
