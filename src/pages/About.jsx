@@ -70,9 +70,9 @@ export default function About() {
             {/* Team Member 1 */}
             <div className="text-center">
               <motion.img
-                src="https://via.placeholder.com/150"
+                src="https://i.ibb.co.com/yykQn2L/ben-stokes.jpg"
                 alt="Team Member"
-                className="rounded-full w-32 mx-auto mb-4"
+                className="rounded-full w-32 h-32 object-cover mx-auto mb-4"
                 whileHover={{ scale: 1.1 }}
               />
               <h3 className="text-xl font-semibold">John Doe</h3>
@@ -81,7 +81,7 @@ export default function About() {
             {/* Team Member 2 */}
             <div className="text-center">
               <motion.img
-                src="https://via.placeholder.com/150"
+                src="https://i.ibb.co.com/k1yhwBv/gettyimages-1273332069-612x612.jpg"
                 alt="Team Member"
                 className="rounded-full w-32 mx-auto mb-4"
                 whileHover={{ scale: 1.1 }}
@@ -92,7 +92,7 @@ export default function About() {
             {/* Team Member 3 */}
             <div className="text-center">
               <motion.img
-                src="https://via.placeholder.com/150"
+                src="https://i.ibb.co.com/S6ySvTD/sendle-vege-threads-photo-elin-bandmann-photography-27-1024x683.jpg"
                 alt="Team Member"
                 className="rounded-full w-32 mx-auto mb-4"
                 whileHover={{ scale: 1.1 }}

@@ -40,7 +40,7 @@ export default function Login() {
       <Helmet>
         <title>StudyCircle | Login</title>
       </Helmet>
-      <div className="card flex-1 w-full p-4  shadow-2xl">
+      <div className="card flex-1 w-full p-4 shadow-2xl">
         <div className="text-center btn bg-gradient-to-r from-primary to-secondary text-white">
           <button onClick={handleSignInWithGoogle} className="flex gap-3">
             <FaGoogle></FaGoogle> Sign In With Google
